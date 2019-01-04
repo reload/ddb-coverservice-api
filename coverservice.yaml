@@ -51,7 +51,6 @@ paths:
               - png
           style: form
           explode: false
-          allowEmptyValue: false
         - name: generic
           description: >-
             # Generic covers
