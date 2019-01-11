@@ -273,8 +273,10 @@ paths:
         # Upload a single cover
 
         Upload a single cover with a given ID, quaility and optionally copyright information and image source.
-      security: 
-        - oauth2: 
+
+        **Notice:** A cover can be known under more than one type/ID. This operation will affect the cover under all known aliases.
+      security:
+        - oauth2:
           - write:covers
       requestBody:
         description: Cover type and ID, image quality, copyright, source, and image data base64 encoded.
@@ -326,7 +328,9 @@ paths:
         # Update a single cover
 
         Update a single cover with a given ID, quaility and optionally copyright information and image source.
-      security: 
+
+        **Notice:** A cover can be known under more than one type/ID. This operation will affect the cover under all known aliases.
+      security:
         - oauth2:
           - write:covers
       requestBody:
@@ -382,8 +386,10 @@ paths:
         # Delete a cover
 
         Use this to delete a cover by ID.
-      security: 
-        - oauth2: 
+
+        **Notice:** A cover can be known under more than one type/ID. This operation will affect the cover under all known aliases.
+      security:
+        - oauth2:
           - write:covers
       parameters:
         - name: type
@@ -429,7 +435,10 @@ paths:
 components:
   schemas:
     Type:
-      description: An identifier URI consisting of identifier type as scheme ("isbn", "faust", "pid", "issn",  or "issn-vol-nr") and the identifier itself.
+      description: >-
+        An identifier URI consisting of identifier type as scheme ("isbn", "faust", "pid", "issn",  or "issn-vol-nr") and the identifier itself.
+
+        **Notice:** A cover can be known under more than one type/ID.
       type: string
       enum:
         - 'faust'
@@ -439,7 +448,10 @@ components:
         - 'pid'
       example: 'pid'
     Id:
-      description: An identifier URI consisting of identifier type as scheme ("isbn", "faust", "pid", "issn",  or "issn-vol-nr") and the identifier itself.
+      description: >-
+        An identifier URI consisting of identifier type as scheme ("isbn", "faust", "pid", "issn",  or "issn-vol-nr") and the identifier itself.
+
+        **Notice:** A cover can be known under more than one type/ID.
       type: string
       example: '870970-basis:26957087'
     CoverCollection:
