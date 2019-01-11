@@ -12,15 +12,15 @@ paths:
       summary: Search covers
       description: >-
         # Search multiple covers
-        
+
         Get covers by ID in specific image format(s), specific image size(s) and with or without generic covers.
-        
+
         The results can be paginated by specifiying an offset and a page limit. The response will contain a "Link" HTTP header according to RFC5988 pointing to previous and/or next page of results.
       parameters:
         - name: type
           description: >-
             # ID type
-            
+
             The type of the ID, i.e. "isbn", "faust", "pid", "issn", or "issn-vol-nr".
           required: true
           in: path
@@ -29,7 +29,7 @@ paths:
         - name: id
           description: >-
             # ID
-            
+
             A list of IDs.
           required: true
           in: query
@@ -45,7 +45,7 @@ paths:
         - name: format
           description: >-
             # Formats
-            
+
             A list of image formats you want to receive the cover(s) in.
           required: false
           in: query
@@ -74,7 +74,7 @@ paths:
         - name: size
           description: >-
             # Image sizes
-            
+
             A list of image sizes (Cloudinary transformations) for the cover(s) you want to receive.
           required: false
           in: query
@@ -82,7 +82,7 @@ paths:
             type: array
             items:
               type: string
-              enum: 
+              enum:
                 - default
                 - original
                 - thumbnail
@@ -95,7 +95,7 @@ paths:
         - name: limit
           description: >-
             # Pagination page limit
-            
+
             Number of covers per page for paginated results.
           required: false
           in: query
@@ -105,7 +105,7 @@ paths:
         - name: offset
           description: >-
             # Pagination page offset
-            
+
             Offset for paginated results.
           required: false
           in: query
@@ -114,18 +114,18 @@ paths:
             default: 0
             minimum: 0
 
-      security: 
+      security:
         - oauth2:
           - read:covers
       responses:
         200:
           description: >-
             # Successful
-            
+
             A list of covers is returned.
-            
+
             Notice that unknown covers will not be present in the list.
-            
+
             Notice that "worst case" you will receive a 200 OK with an empty list.
           headers:
             Link:
@@ -145,12 +145,12 @@ paths:
         401:
           description: >-
             # Unauthorized
-            
+
             Credentials are required for this operation.
         403:
           description: >-
             # Forbidden
-            
+
             The credentials used does are not authorized for this operation.
         default:
           description: Undefined error
@@ -160,16 +160,16 @@ paths:
       summary: Get cover
       description: >-
         # Get one cover
-        
+
         Get one cover by type and ID in specific image format(s), specific image size(s) and with or without generic covers.
-      security: 
+      security:
         - oauth2:
           - read:covers
       parameters:
         - name: type
           description: >-
             # ID type
-            
+
             The type of the ID, i.e. "isbn", "faust", "pid", "issn", or "issn-vol-nr".
           required: true
           in: path
@@ -178,7 +178,7 @@ paths:
         - name: id
           description: >-
             # ID
-            
+
             The ID of the cover.
           required: true
           in: path
@@ -187,7 +187,7 @@ paths:
         - name: format
           description: >-
             # Formats
-            
+
             A list of image formats you want to receive the cover(s) in.
           required: false
           in: query
@@ -216,7 +216,7 @@ paths:
         - name: size
           description: >-
             # Image sizes
-            
+
             A list if image sizes (Cloudinary transformations) for the cover(s) you want to receive.
           required: false
           in: query
@@ -224,7 +224,7 @@ paths:
             type: array
             items:
               type: string
-              enum: 
+              enum:
                 - default
                 - original
                 - thumbnail
@@ -238,11 +238,11 @@ paths:
         200:
           description: >-
             # Successful
-            
+
             A list of covers is returned.
-            
+
             Notice that unknown covers will not be present in the list.
-            
+
             Notice that "worst case" you will receive a 200 OK with an empty list.
           headers:
           content:
@@ -252,17 +252,17 @@ paths:
         401:
           description: >-
             # Unauthorized
-            
+
             Credentials are required for this operation.
         403:
           description: >-
             # Forbidden
-            
+
             The credentials used does are not authorized for this operation.
         404:
           description: >-
             # Not found
-            
+
             A cover for the type / ID could not be found.
         default:
           description: Undefined error
@@ -271,7 +271,7 @@ paths:
       summary: Upload a cover
       description: >-
         # Upload a single cover
-        
+
         Upload a single cover with a given ID, quaility and optionally copyright information and image source.
       security: 
         - oauth2: 
@@ -286,7 +286,7 @@ paths:
         - name: type
           description: >-
             # ID type
-            
+
             The type of the ID, i.e. "isbn", "faust", "pid", "issn", or "issn-vol-nr".
           required: true
           in: path
@@ -295,7 +295,7 @@ paths:
         - name: id
           description: >-
             # ID
-            
+
             The ID of the cover.
           required: true
           in: path
@@ -305,17 +305,17 @@ paths:
         201:
           description: >-
             # Created
-            
+
             Successfully uploaded the cover.
         401:
           description: >-
             # Unauthorized
-            
+
             Credentials are required for this operation.
         403:
           description: >-
             # Forbidden
-            
+
             The credentials used does are not authorized for this operation.
         default:
           description: Undefined error.
@@ -324,7 +324,7 @@ paths:
       summary: Update a cover
       description: >-
         # Update a single cover
-        
+
         Update a single cover with a given ID, quaility and optionally copyright information and image source.
       security: 
         - oauth2:
@@ -339,7 +339,7 @@ paths:
         - name: type
           description: >-
             # ID type
-            
+
             The type of the ID, i.e. "isbn", "faust", "pid", "issn", or "issn-vol-nr".
           required: true
           in: path
@@ -348,7 +348,7 @@ paths:
         - name: id
           description: >-
             # ID
-            
+
             The ID of the cover.
           required: true
           in: path
@@ -358,17 +358,17 @@ paths:
         204:
           description: >-
             # Updated
-            
+
             Successfully updated the cover.
         401:
           description: >-
             # Unauthorized
-            
+
             Credentials are required for this operation.
         403:
           description: >-
             # Forbidden
-            
+
             The credentials used does are not authorized for this operation.
         404:
           description: >-
@@ -380,16 +380,16 @@ paths:
       summary: Delete a cover.
       description: >-
         # Delete a cover
-        
+
         Use this to delete a cover by ID.
       security: 
         - oauth2: 
           - write:covers
-      parameters: 
+      parameters:
         - name: type
           description: >-
             # ID type
-            
+
             The type of the ID, i.e. "isbn", "faust", "pid", "issn", or "issn-vol-nr".
           required: true
           in: path
@@ -398,7 +398,7 @@ paths:
         - name: id
           description: >-
             # ID
-            
+
             The ID of the cover.
           required: true
           in: path
@@ -408,17 +408,17 @@ paths:
         204:
           description: >-
             # Deleted
-            
+
             Successfully deleted the cover.
         401:
           description: >-
             # Unauthorized
-            
+
             Credentials are required for this operation.
         403:
           description: >-
             # Forbidden
-            
+
             The credentials used does are not authorized for this operation.
         404:
           description: >-
