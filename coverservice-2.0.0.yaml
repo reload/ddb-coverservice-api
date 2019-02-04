@@ -372,4 +372,4 @@ components:
 
 servers:
   - description: DDB Cover serrvice
-    url: https://example.com/coverservice/2.0
+    url: https://cover.dandigbib.org/api
